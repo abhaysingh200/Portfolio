@@ -1,24 +1,73 @@
 import React from "react";
 
-const certificates = [
-  { name: "Java Bootcamp Winner", org: "Upgrad-Bootcamp" },
-  { name: "Blockchain Developer", org: "Upgrad-Campus" },
-  { name: "Backend Developer", org: "Upgrad-Campus" },
+import BackendDevelopment from "../assets/BackendDevelopment.png";
+import BlockchainAndItsApplication from "../assets/BlockchainAndItsApplication.png";
+import JavaBootcampWinner from "../assets/JavaBootcampWinner.png";
+import hackathon from "../assets/hackathon.jpeg";
+import internship from "../assets/internship.jpeg";
+import "../styles/certificates.css";
+
+const certificatesData = [
+  {
+    name: "Java Bootcamp Winner",
+    org: "Upgrad-Bootcamp",
+    image: JavaBootcampWinner,
+    link: "https://certificate.givemycertificate.com/c/cadfd6b4-6869-4e30-976c-56ca1af0ccd7",
+  },
+  {
+    name: "Blockchain Developer",
+    org: "Upgrad-Campus",
+    image: BlockchainAndItsApplication,
+    link: "https://upgradcampus.certificate.givemycertificate.com/c/feebf47f-7ca9-4338-98a4-98197bf560e6",
+  },
+  {
+    name: "Backend Developer",
+    org: "Upgrad-Campus",
+    image: BackendDevelopment,
+    link: "https://upgradcampus.certificate.givemycertificate.com/c/733e9c25-bb60-4940-b9d0-943fe62664d6",
+  },
+  {
+    name: "Modular Worlds Hackathon",
+    org: "BlockseBlock",
+    image: hackathon,
+    link: hackathon,
+  },
+  {
+    name: "Internship Certificate",
+    org: "BlockseBlock",
+    image: internship,
+    link: internship,
+  },
 ];
 
 const Certificates = () => {
   return (
-    <section className="bg-[#0e1117] px-6 md:px-16 py-12" id="certificates">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold text-white mb-6">Certificates</h2>
-        <ul className="space-y-4">
-          {certificates.map((cert, index) => (
-            <li key={index} className="bg-[#161b22] p-4 rounded shadow hover:shadow-lg">
-              <p className="text-blue-400 font-semibold">{cert.name}</p>
-              <p className="text-gray-400 text-sm">Issued by: {cert.org}</p>
-            </li>
+    <section className="certificates-section" id="certificates">
+      <div className="certificates-container">
+        <h2 className="certificates-heading">Certificates</h2>
+        <div className="certificates-grid">
+          {certificatesData.map((cert, index) => (
+            <div key={index} className="certificate-card">
+              <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={cert.image}
+                  alt={cert.name || "Certificate"}
+                  className="certificate-image"
+                />
+              </a>
+              <h3 className="certificate-title">{cert.name}</h3>
+              <p className="certificate-org">Issued by: {cert.org}</p>
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="certificate-btn"
+              >
+                View Certificate
+              </a>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

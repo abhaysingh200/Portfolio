@@ -1,67 +1,108 @@
 import React from "react";
-import sampleImage from "../assets/sample-project.jpg";
-import gdriveimge from "../assets/gdriveimg.png"
-import ecommerce from "../assets/ecommerce.png"
-import { Link } from "react-router-dom";
-
-const projects = [
+import "../styles/projects.css";
+import sampleImage from "../assets/realChatApp.jpg";
+import gdriveimge from "../assets/gdriveimg.png";
+import ecommerce from "../assets/ecommerce.png";
+import nftmarketplace from "../assets/NftMarketPlace.png";
+import rentRental from "../assets/SmartRentalBlockchain.PNG";
+import JavaMedical from "../assets/JavaMedicalProject.PNG";
+import Criminal from "../assets/CriminalRecordManagement.PNG";
+import FlowAutomation from "../assets/FlowAutomation.PNG";
+const categorizedProjects = {
+  Blockchain: [
     {
-        title: "GDrive 3.0",
-        description:
-            "Developed a decentralized file uploader dApp with secure IPFS storage via Pinata. Integrated MetaMask for wallet authentication and smart contracts for access control and file sharing.",
-        image: gdriveimge,
-        link: "https://github.com/abhaysingh200/Web3FileUpload",
+      title: "GDrive 3.0",
+      description: "A decentralized file storage dApp leveraging IPFS for data storage, MetaMask for authentication, and Ethereum smart contracts for security.",
+      image: gdriveimge,
+      github: "https://github.com/abhaysingh200/Web3FileUpload",
     },
     {
-        title: "Real-Time Live Chat App",
-        description:
-            "Built a real-time chat app with room-based messaging, MetaMask wallet connection, file sharing, and voice note features. Mobile-responsive UI and public tunneling enabled via Ngrok.",
-        image: sampleImage,
-        link: "https://github.com/abhaysingh200/LiveChatApp",
+      title: "NFT-Marketplace",
+      description: "Blockchain-based marketplace to mint, buy, and sell NFTs with IPFS storage and MetaMask integration.",
+      image: nftmarketplace,
+      github: "https://github.com/abhaysingh200/NFT-Marketplace",
     },
     {
-        title: "Full-Stack eCommerce Platform",
-        description:
-            "Developed a full-featured eCommerce web app with separate dashboards for sellers and buyers, product management, and secure user authentication (JWT). Sellers can add/edit/delete products, while buyers can browse and place orders. Clean, responsive UI built with TailwindCSS.",
-        image: ecommerce,
-        link: "https://github.com/abhaysingh200/Ecommerce",
+      title: "Rent-Rental Project",
+      description: "Smart contract powered rental system ensuring transparent agreements and secure payments on blockchain.",
+      image: rentRental,
+      github: "https://github.com/abhaysingh200/Rent-Rental-Blockchain",
     },
-];
+  ],
+  Fullstack: [
+    {
+      title: "Real-Time Live Chat App",
+      description: "Full-stack chat application with real-time messaging, file sharing, and voice notes using WebSockets and secure authentication.",
+      image: sampleImage,
+      github: "https://github.com/abhaysingh200/LiveChatApp",
+    },
+    {
+      title: "Full-Stack eCommerce Platform",
+      description: "MERN-based eCommerce system featuring product management, seller/buyer dashboards, JWT authentication, and Tailwind CSS UI.",
+      image: ecommerce,
+      github: "https://github.com/abhaysingh200/Ecommerce",
+    },
+  ],
+  Java: [
+    {
+      title: "Criminal Record Management",
+      description: "Java + MySQL project for managing criminal records with CRUD operations, search functionality, and data persistence.",
+      image: Criminal,
+      github: "https://github.com/abhaysingh200/CriminalRecordSystem",
+    },
+    {
+      title: "Hospital Management System",
+      description: "Java-based CLI project applying OOP concepts to manage patients, doctors, and appointments efficiently.",
+      image: JavaMedical,
+      github: "https://github.com/abhaysingh200/UpgradMedicalProjectJava",
+    },
+  ],
+  Automation: [
+    {
+      title: "Make Automation-Workflow",
+      description: "Automated workflow to generate invoices from WooCommerce orders, reducing manual work and ensuring accuracy.",
+      image: FlowAutomation
+    },
+  ],
+};
 
 
 const Projects = () => {
-    return (
-        <section className="bg-[#0e1117] px-6 md:px-16 py-12">
-            <div className="max-w-7xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6 text-white">Projects</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project, index) => (
-                        <div
-                            key={index}
-                            className="bg-[#161b22] rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col"
-                        >
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-40 object-cover rounded-md mb-4"
-                            />
-                            <h3 className="text-xl font-semibold text-blue-400">{project.title}</h3>
-                            <p className="text-gray-300 mt-2 flex-1">{project.description}</p>
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-4 text-sm text-blue-300 hover:underline self-start"
-                            >
-                                View Project on GitHub
-                            </a>
+  return (
+    <section id="projects" className="projects-section">
+      <div className="projects-container">
+        <h2 className="projects-heading">Projects</h2>
 
-                        </div>
-                    ))}
+        {Object.entries(categorizedProjects).map(([category, projects]) => (
+          <div key={category} className="category-section">
+            <h3 className="category-title">{category}</h3>
+
+            <div className="project-grid">
+              {projects.map((project, index) => (
+                <div key={index} className="project-card">
+                  <img src={project.image} alt={project.title} className="project-image" />
+                  <h4 className="project-title">{project.title}</h4>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-buttons">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-btn"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Projects;

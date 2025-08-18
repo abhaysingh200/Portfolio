@@ -1,0 +1,119 @@
+.certificates-section {
+  background-color: #0e1117;
+  color: white;
+  padding: 60px 20px;
+  /* increased to match projects section */
+  min-height: 10vh;
+
+}
+
+.certificates-container {
+  max-width: 1600px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -80px;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.certificates-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: bold;
+  margin-bottom: 50px;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+}
+
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+
+.certificate-card {
+  background-color: #161b22;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.certificate-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.certificate-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.certificate-org {
+  font-size: 15px;
+  color: #e5e7eb;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.certificate-btn {
+  text-decoration: none;
+  padding: 12px 20px;
+  /* same as project buttons */
+  background-color: #3b82f6;
+  color: white;
+  font-size: 15px;
+  /* made consistent */
+  border-radius: 8px;
+  /* slightly bigger for uniform look */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.certificate-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .certificates-container {
+    width: 90%;
+  }
+
+  .certificates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+    /* stack */
+  }
+
+  .certificate-image {
+    height: 150px;
+  }
+
+  .certificate-card {
+    padding: 15px;
+  }
+}
